@@ -23,7 +23,7 @@ const userSchema = new Schema({
         type: String,
         default: "https://upload.wikimedia.org/wikipedia/commons/thumb/7/77/Satoshi_Nakamoto.jpg/1200px-Satoshi_Nakamoto.jpg"
     },
-    porfolio: {
+    portfolios: {
         type: [Schema.Types.ObjectId], ref: "portfolios"
     }
 })
