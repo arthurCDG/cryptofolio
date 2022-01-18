@@ -1,6 +1,6 @@
 var express = require("express");
 var router = express.Router();
-const UserModel = require("./../models/User.model");
+const UserModel = require("../models/User.model");
 const bcrypt = require("bcrypt");
 
 // Here we'll have signin and signup get/post routes
