@@ -1,0 +1,25 @@
+<h1>This is the portfolio details page</h1>
+
+<h2>{{portfolio.name}}</h2>
+
+<div>
+    <h3>Total value: <b>???? VALEUR DE TOUTES LES HOLDINGS ????</b></h3>
+    <p>{{portfolio.notes}}</p>
+</div>
+
+<div>
+    {{#each portfolio.holdings}}
+        <div>
+            <img src={{this.crypto.image}} alt={{this.crypto.name}}>
+            <span>{{this.crypto.name}}</span>
+            <div>
+                <span>{{this.quantity}}</span>
+                <span>???? CALCUL DE QUANTITY * VALEUR DE LA CRYPTO ????</span>
+            </div>
+        </div>
+    {{/each}}
+</div>
+
+<div>
+    <a href="/dashboard/portfolio/{{portfolio._id}}/all-crypto"><i class="fa-solid fa-circle-plus"></i></a>
+</div>
