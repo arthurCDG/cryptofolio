@@ -8,10 +8,13 @@ const cryptoModel = require("./../models/Crypto.model");
 router.get("/:id", (req, res, next) => {
   portfolioModel
     .findById(req.params.id)
-    .populate("holdings")
-    .populate("cryptos")
+    .populate({
+      path: "holdings",
+      populate: {
+        path: "crypto",
+      },
+    })
     .then((portfolio) => {
-      console.log(portfolioModel.findById(req.params.id).populate("holdings"));
       console.log(portfolio);
       res.render("portfolio/portfolio-details", { portfolio });
     })
