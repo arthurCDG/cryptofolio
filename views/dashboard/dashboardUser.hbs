@@ -1,9 +1,20 @@
 <h1>THIS IS DASHBOARD</h1>
 
 {{#each user.portfolios}}
-  <a href="" class="portfolio">
-    <p>{{_id}}</p>
-    <p>{{name}}</p>
-    <p>{{notes}}</p>
-  </a>
+  <div class="portfolios">
+    <a href="/dashboard/portfolio/{{_id}}">
+      <p>{{_id}}</p>
+      <p>{{name}}</p>
+      <p>{{notes}}</p>
+    </a>
+    <button class="btn-edit"></button>
+    <button class="btn-delete"></button>
+  </div>
 {{/each}}
+
+<div id="create-portfolio">
+  <input type="text" value="name" id="create-name" />
+  <input type="text" value="notes" id="create-notes" />
+
+  <button>Create</button>
+</div>
