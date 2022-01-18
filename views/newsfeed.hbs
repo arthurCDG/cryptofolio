@@ -1,0 +1,32 @@
+<h1 class="title">CryptoFolio's newsfeed</h1>
+<h2>Welcome to your customizable crypto newsfeed</h2>
+
+<p>
+    Getting informed on your asset is <b>of paramount iportance</b> !<br>
+    <b>Enjoy</b> reading your crypto news with CrypotoFolio, a fullstack application powered by expressjs, mongodb and
+    hbs.
+</p>
+
+<hr>
+
+{{!-- https://cors-anywhere.herokuapp.com/ --}}
+
+{{!--
+<script>
+    axios
+        .get(
+            "https://cors-anywhere.herokuapp.com/https://cryptopanic.com/api/v1/posts/?auth_token=00b0567da59a656d0a16a62993ee998100f0e430&currencies=BTC,ETH&public=true"
+        )
+        .then((allNews) => {
+            console.log("All news from API: ", allNews.data);
+            //allNews.data => à convertir en array JS
+            /* allNews.data.forEach((oneNews) => {
+                console.log(oneNews)
+            });*/
+            for (let i = 0; i < allNews.data.length; i++) {
+                console.log("SUCCESS!");
+            }
+            //process.exit();
+        })
+        .catch((err) => console.log(err));
+</script> --}}
