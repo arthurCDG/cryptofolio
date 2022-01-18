@@ -6,32 +6,30 @@ const CryptoModel = require("./../models/Crypto.model");
 const priceUpdate = require("./../bin/priceUpdate");
 
 // Display the portfolio page of each user
-router.get("/:id", (req, res, next) => {
-  priceUpdate();
-  PortfolioModel
-    .findById(req.params.id)
-    .populate({
+router.get("/:id", async (req, res, next) => {
+  try {
+    await priceUpdate();
+
+    const portfolio = await PortfolioModel.findById(req.params.id).populate({
       path: "holdings",
       populate: {
         path: "crypto",
       },
-    })
-    .then((portfolio) => {
-      console.log(portfolio);
-      //portfolio.quantity*portfolio.crypto.current_price;
-      console.log(portfolio.holdings[0].quantity);
-      console.log(portfolio.holdings);
-      const holdingValue = portfolio.holdings[0].quantity * portfolio.holdings[0].crypto["current_price"];
-      console.log("HOLDING VALUE", holdingValue);
-      res.render("portfolio/portfolio-details", { portfolio, holdingValue });
-    })
-    .catch((err) => console.error(err));
+    });
+
+    const holdingValue =
+      portfolio.holdings[0].quantity *
+      portfolio.holdings[0].crypto.current_price;
+
+    res.render("portfolio/portfolio-details", { portfolio, holdingValue });
+  } catch (err) {
+    console.error(err);
+  }
 });
 
 // Display all the cryptos to add them
 router.get("/:id/all-crypto", (req, res, next) => {
-  CryptoModel
-    .find()
+  CryptoModel.find()
     .then((allCryptos) => {
       res.render("portfolio/all-crypto", { crypto: allCryptos });
     })
