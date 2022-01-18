@@ -16,21 +16,24 @@ router.get("/:userId", function (req, res) {
 });
 
 //Dashboard CREATE Portfolio
-router.post("/:userId/create", function (req, res, next) {
+router.post("/create", function (req, res, next) {
     PortfolioModel.create(req.body)
-        .then((newPortfolio) => res.json(newPortfolio))
+        .then((newPortfolio) => {
+            console.log(newPortfolio, "NEWPORTFOLIO HERE")
+            res.json(newPortfolio)
+        })
         .catch((err) => next(err))
 });
 
 //Dashboard UPDATE Portfolio
-router.patch("/:userId/update/:id", function (req, res, next) {
+router.patch("/update/:id", function (req, res, next) {
     PortfolioModel.findByIdAndUpdate(req.params.id, req.body)
         .then((editPortfolio) => res.json(editPortfolio))
         .catch((err) => next(err))
 });
 
 //Dashboard DELETE Portfolio
-router.delete("/:userId/delete/:id", function (req, res, next) {
+router.delete("/delete/:id", function (req, res, next) {
     PortfolioModel.findByIdAndDelete(req.params.id)
         .then((deletePortfolio) => res.json(deletePortfolio))
         .catch((err) => next(err))
