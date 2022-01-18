@@ -6,4 +6,4 @@ const holdingSchema = new Schema({
     crypto: { type: Schema.Types.ObjectId, ref: "cryptos" }
 });
 
-module.exports = mongoose.model("cryptos", holdingSchema);
+module.exports = mongoose.model("holdings", holdingSchema);
