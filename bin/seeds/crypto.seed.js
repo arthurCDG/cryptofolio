@@ -16,6 +16,5 @@ axios
       });
     });
     console.log("SUCCESS!");
-    process.exit();
   })
   .catch((err) => console.log(err));
