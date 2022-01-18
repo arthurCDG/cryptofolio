@@ -21,4 +21,15 @@ router.get("/:id", (req, res, next) => {
     .catch((err) => console.error(err));
 });
 
+router.get("/:id/all-crypto", (req, res, next) => {
+  cryptoModel
+    .find()
+    .then((allCryptos) => {
+      res.render("portfolio/all-crypto", { crypto: allCryptos });
+    })
+    .catch((err) => console.error(err));
+});
+
+// router.get("/:id/crypto/:id",
+
 module.exports = router;
