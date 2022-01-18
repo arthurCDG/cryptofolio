@@ -1,21 +1,41 @@
 var express = require("express");
 var router = express.Router();
-const portfolioModel = require("./../models/Portfolio.model");
-const holdingModel = require("./../models/Holding.model");
-const cryptoModel = require("./../models/Crypto.model");
+const PortfolioModel = require("./../models/Portfolio.model");
+const HoldingModel = require("./../models/Holding.model");
+const CryptoModel = require("./../models/Crypto.model");
+const priceUpdate = require("./../bin/priceUpdate");
 
 // Display the portfolio page of each user
-router.get("/:id", (req, res, next) => {
-  portfolioModel
-    .findById(req.params.id)
-    .populate("holdings")
-    .populate("cryptos")
-    .then((portfolio) => {
-      console.log(portfolioModel.findById(req.params.id).populate("holdings"));
-      console.log(portfolio);
-      res.render("portfolio/portfolio-details", { portfolio });
+router.get("/:id", async (req, res, next) => {
+  try {
+    await priceUpdate();
+
+    const portfolio = await PortfolioModel.findById(req.params.id).populate({
+      path: "holdings",
+      populate: {
+        path: "crypto",
+      },
+    });
+
+    const holdingValue =
+      portfolio.holdings[0].quantity *
+      portfolio.holdings[0].crypto.current_price;
+
+    res.render("portfolio/portfolio-details", { portfolio, holdingValue });
+  } catch (err) {
+    console.error(err);
+  }
+});
+
+// Display all the cryptos to add them
+router.get("/:id/all-crypto", (req, res, next) => {
+  CryptoModel.find()
+    .then((allCryptos) => {
+      res.render("portfolio/all-crypto", { crypto: allCryptos });
     })
     .catch((err) => console.error(err));
 });
+
+// router.get("/:id/crypto/:id",
 
 module.exports = router;

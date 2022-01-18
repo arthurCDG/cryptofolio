@@ -12,14 +12,15 @@
         <div>
             <img src={{this.crypto.image}} alt={{this.crypto.name}}>
             <span>{{this.crypto.name}}</span>
+            <span>${{this.crypto.current_price}}</span>
             <div>
                 <span>{{this.quantity}}</span>
-                <span>???? CALCUL DE QUANTITY * VALEUR DE LA CRYPTO ????</span>
+                <span>{{holdingValue}}</span>
             </div>
         </div>
     {{/each}}
 </div>
 
 <div>
-    <a href="/dashboard/portfolio/{{portfolio._id}}/all-crypto"><i class="fa-solid fa-circle-plus"></i></a>
+    <a href="/dashboard/portfolio/{{portfolio._id}}/all-crypto"><i class="fas fa-plus-circle"></i></a>
 </div>
