@@ -18,11 +18,20 @@ router.get("/:id", async (req, res, next) => {
       },
     });
 
-    const holdingValue =
-      portfolio.holdings[0].quantity *
-      portfolio.holdings[0].crypto.current_price;
+    let totalPortfolioValue = 0;
 
-    res.render("portfolio/portfolio-details", { portfolio, holdingValue });
+    for (let i = 0; i < portfolio.holdings.length; i++) {
+      const holdingValue =
+        portfolio.holdings[i].quantity *
+        portfolio.holdings[i].crypto.current_price;
+      totalPortfolioValue += holdingValue;
+      portfolio.holdings[i].value = holdingValue;
+    }
+
+    res.render("portfolio/portfolio-details", {
+      portfolio,
+      totalPortfolioValue,
+    });
   } catch (err) {
     console.error(err);
   }
@@ -32,11 +41,72 @@ router.get("/:id", async (req, res, next) => {
 router.get("/:id/all-crypto", (req, res, next) => {
   CryptoModel.find()
     .then((allCryptos) => {
-      res.render("portfolio/all-crypto", { crypto: allCryptos });
+      res.render("portfolio/all-crypto", {
+        crypto: allCryptos,
+        portfolioId: req.params.id,
+      });
     })
     .catch((err) => console.error(err));
 });
 
-// router.get("/:id/crypto/:id",
+// Diplay the details of one crypto
+router.get("/:portfolioId/crypto/:cryptoId", async (req, res, next) => {
+  try {
+    const cryptoId = req.params.cryptoId;
+    const portfolioId = req.params.portfolioId;
+    let holdingId;
+
+    const existingHolding = await HoldingModel.find({ crypto: cryptoId });
+
+    if (existingHolding.length > 0) {
+      holdingId = existingHolding[0]._id;
+    } else {
+      const newHolding = await HoldingModel.create({
+        quantity: 0,
+        crypto: cryptoId,
+      });
+
+      holdingId = newHolding._id;
+
+      await PortfolioModel.findByIdAndUpdate(portfolioId, {
+        $push: { holdings: holdingId },
+      });
+    }
+
+    const crypto = await CryptoModel.findById(cryptoId);
+    await res.render("portfolio/crypto-details", {
+      crypto,
+      portfolioId,
+      holdingId,
+    });
+  } catch (err) {
+    next(err);
+  }
+});
+
+// Update crypto holding route
+router.patch("/:portfolioId/holding/:holdingId/update", (req, res, next) => {
+  const { holdingId } = req.params;
+  console.log("This is req.body on line 90", req.body);
+  HoldingModel.findByIdAndUpdate(holdingId, {
+    quantity: req.body.quantity,
+  })
+    .then((updatedHolding) => {
+      console.log("This is updatedHolding on line 95", updatedHolding);
+      res.json(updatedHolding);
+    })
+    .catch((err) => console.error(err));
+});
+
+// Delete crypto holding route
+router.get("/:portfolioId/holding/:holdingId/delete", (req, res, next) => {
+  portfolioId = req.params.portfolioId;
+  HoldingModel.findByIdAndDelete(req.params.holdingId)
+    .then((deletedHolding) => {
+      console.log(deletedHolding);
+      res.redirect(`/dashboard/portfolio/${portfolioId}`);
+    })
+    .catch((err) => console.error(err));
+});
 
 module.exports = router;
