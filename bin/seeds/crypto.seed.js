@@ -12,6 +12,7 @@ axios
     allCrypto.data.forEach((crypto) => {
       CryptoModel.create({
         name: crypto.name,
+        symbol: crypto.symbol,
         image: crypto.image,
         current_price: crypto.current_price,
       });

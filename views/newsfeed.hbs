@@ -9,24 +9,57 @@
 
 <hr>
 
-{{!-- https://cors-anywhere.herokuapp.com/ --}}
+<h2>Select a specific crypto news</h2>
 
-{{!--
+<label for="cryptochoice">Choose a specific crypto news:</label>
+<input list="cryptochoice-1" id="cryptochoice" name="cryptochoice" />
+<p>Reading {{selectedCrypto.name}}'s news</p>
+
+<br>
+
+<datalist id="cryptochoice-1">
+    {{#each crypto}}
+    <option value={{this.symbol}}>
+        {{/each}}
+</datalist>
+
+
+<h2>All crypto news</h2>
+
+{{#each allNews}}
+<li>{{this.title}}<br>
+    {{this.published_at}}<br>
+    <a href={{this.url}}>Read this news</a>
+</li>
+{{/each}}
+
+<br><br>
+
+{{!-- <a href="/newsfeed/BTC">BTC LATEST NEWS</a>
+<a href="/newsfeed/ETH">ETH LATEST NEWS</a>
+<a href="/newsfeed/BNB">BNB LATEST NEWS</a>
+<a href="/newsfeed/XRP">XRP LATEST NEWS</a> --}}
+
+
+
+
+
+
+
 <script>
-    axios
-        .get(
-            "https://cors-anywhere.herokuapp.com/https://cryptopanic.com/api/v1/posts/?auth_token=00b0567da59a656d0a16a62993ee998100f0e430&currencies=BTC,ETH&public=true"
-        )
-        .then((allNews) => {
-            console.log("All news from API: ", allNews.data);
-            //allNews.data => à convertir en array JS
-            /* allNews.data.forEach((oneNews) => {
-                console.log(oneNews)
-            });*/
-            for (let i = 0; i < allNews.data.length; i++) {
-                console.log("SUCCESS!");
-            }
-            //process.exit();
-        })
-        .catch((err) => console.log(err));
-</script> --}}
+
+    const selectElement = document.querySelector("#cryptochoice");
+
+    selectElement.addEventListener("change", (evt) => {
+        console.log("EVT TARGET", evt.target);
+        console.log(evt.target.value);
+        const cryptoSelected = evt.target.value;
+        document.location.href = `/newsfeed/${cryptoSelected}`
+    })
+
+
+</script>
+
+
+
+{{!-- axios.get(`/newsfeed/${cryptoSelected}`) --}}
