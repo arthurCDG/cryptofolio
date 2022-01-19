@@ -3,21 +3,23 @@
 <h2>{{portfolio.name}}</h2>
 
 <div>
-    <h3>Total value: <b>???? VALEUR DE TOUTES LES HOLDINGS ????</b></h3>
+    <h3>Total value: <b>${{totalPortfolioValue}}</b></h3>
     <p>{{portfolio.notes}}</p>
 </div>
 
 <div>
     {{#each portfolio.holdings}}
-        <div>
-            <img src={{this.crypto.image}} alt={{this.crypto.name}}>
-            <span>{{this.crypto.name}}</span>
-            <span>${{this.crypto.current_price}}</span>
+        <a href="/dashboard/portfolio/{{../portfolio._id}}/crypto/{{this.crypto._id}}">
             <div>
-                <span>{{this.quantity}}</span>
-                <span>{{holdingValue}}</span>
+                <img src={{this.crypto.image}} alt={{this.crypto.name}}>
+                <span>{{this.crypto.name}}</span>
+                <span>${{this.crypto.current_price}}</span>
+                <div>
+                    <span>{{this.quantity}}</span>
+                    <span>${{this.value}}</span>
+                </div>
             </div>
-        </div>
+        </a>
     {{/each}}
 </div>
 
