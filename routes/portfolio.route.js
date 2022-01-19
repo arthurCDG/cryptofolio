@@ -3,12 +3,13 @@ var router = express.Router();
 const PortfolioModel = require("./../models/Portfolio.model");
 const HoldingModel = require("./../models/Holding.model");
 const CryptoModel = require("./../models/Crypto.model");
-const priceUpdate = require("./../bin/priceUpdate");
+const { priceUpdate, getCurrentMarket } = require("./../bin/priceUpdate");
 
 // Display the portfolio page of each user
 router.get("/:id", async (req, res, next) => {
   try {
-    await priceUpdate();
+    const { data } = await getCurrentMarket();
+    await priceUpdate(data);
 
     const portfolio = await PortfolioModel.findById(req.params.id).populate({
       path: "holdings",
