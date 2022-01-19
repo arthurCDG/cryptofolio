@@ -1,7 +1,25 @@
-<h1>This is the all crypto page</h1>
+<div>
+    <a href="/dashboard/portfolio/{{portfolioId}}">
+        <i class="fas fa-times"></i>
+    </a>
+</div>
+
+<div>
+    <h2>Add coin</h2>
+    <input list="crypto-list" type="text" placeholder="Search over 100+ coins" name="coin">
+    <datalist id="crypto-list">
+        {{#each crypto}}
+            <option value={{name}}></option>
+        {{/each}}
+    </datalist>
+</div>
 
 {{#each crypto}}
+
     <div>
-        <span><img src={{image}} alt={{name}}></span> <span>{{name}}</span>
+        <a href="/dashboard/portfolio/{{../portfolioId}}/crypto/{{_id}}">
+            <span><img src={{image}} alt={{name}}></span> <span>{{name}}</span>
+        </a>
     </div>
+
 {{/each}}
