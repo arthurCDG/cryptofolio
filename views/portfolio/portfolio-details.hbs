@@ -6,6 +6,7 @@
 </div>
 
 <div>
+    {{#if portfolio.holdings}}
     {{#each portfolio.holdings}}
         <a href="/dashboard/portfolio/{{../portfolio._id}}/crypto/{{this.crypto._id}}">
             <div>
@@ -19,6 +20,9 @@
             </div>
         </a>
     {{/each}}
+    {{else}}
+        <h4>You don't have any crypto in this portfolio. You can add one with the button below.</h4>
+    {{/if}}
 </div>
 
 <div>
