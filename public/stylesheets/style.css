@@ -49,3 +49,78 @@ span {
 a {
   color: #00b7ff;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Steven's part has to be on the main style css deal with the layout.hbs */
+header  {
+  padding: 0 25px;
+  padding-bottom: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px dotted lightgray;
+
+}
+
+.logo{
+    width: 100px;
+}
+
+.nav{
+  background-color: rgb(25, 33, 41);
+  padding: 14px 0;
+  /* display: inline-block; */
+}
+nav a {
+  font-size: 1em;
+  text-decoration: none;
+  color: white;
+}
+
+
+
+.footer {
+  /* font-size: 1em; */
+  text-align: center;
+  /* padding: 40px 100px; */
+  margin-bottom: 25px;
+  margin-top: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 200px;
+  border-top: 1px dotted lightgray;
+}
+
+.footer ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer a {
+  color: rgb(67, 163, 230);
+  text-decoration: none;
+}

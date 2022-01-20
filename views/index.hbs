@@ -1,11 +1,8 @@
 <header class="header">
-    <h1><img src="https://i.ibb.co/q5xXMp4/Capture-d-e-cran-2022-01-20-a-11-04-02.png" alt="CryptoFolio Logo">
-    </h1>
-    <br>
-    <h2>Welcome to CrypotoFolio</h2>
+    <h2></h2>
     <aside class="quote">
-        <i> “The best Crypto Experience of my life” </i>
-        <p> Satoshi Nakamoto & Vitalik Butterin, Crypto Kings </p>
+        <i> “The best Crypto Tracker of my life WAGMI"</i>
+        <p><b> Satoshi Nakamoto & Vitalik Butterin, Crypto Kings </b></p>
     </aside>
 </header>
 
@@ -14,12 +11,14 @@
 
 <!-- new section -->
 <section class="container" id="why">
-    <article class="container">
-        <h3> Why do you want use CryptoFolio! </h3>
+    <article class="why">
+        <h3> Why would you want use CryptoFolio? </h3>
         <p>
-            Cryptotracking is <b>of paramount iportance</b> !
-            In order to be uptodate with all the cyrpto you have, you should use a quick and handy portfolio tracker !
-            And you know what that is exactly what we offer you here :)
+            Hey frens, as you might know tracking your assets and be organized is <b>of paramount importance</b> to
+            make it in the Crypto Game!
+            In order to be up-to-date with all the cyrpto you have, you should use a quick and handy portfolio tracker !
+            And GUESS what! <br>
+            That is exactly what we offer you here 😏
 
         </p>
     </article>
@@ -30,11 +29,26 @@
 
 <!-- new section -->
 <section class="container" id="how">
-    <h3> How should you use CryptoFolio </h3>
-    <div>
-        <article class="container">
-            <p></p>
-    </div>
+    <article class="how">
+
+        <h3> How should you use CryptoFolio? </h3>
+        <p>
+            CryptoFolio is a <b>really simple and handy</b> app!
+            All you have to do is :
+            <li>Create an Account</li>
+            <li>Login to your Account</li>
+            Once you'r login: go to your dashboard page
+            <li>Create a portfolio (name + comment)</li>
+            <li>Add your cryptocurrencies</li>
+            <li>For each crypto add the value you have and update it as soon as you buy/sell crypto so that your
+                portfolio's value is always uptodate!</li>
+
+        <p>You can create as much portfolio as you want (for any strategy/risk management/for someone...)</p>
+
+
+        </p>
+    </article>
+
 </section>
 
 <br><br>
@@ -45,7 +59,8 @@
     <h3> Ready to keep track of your cyrpto investment: singup for a Free Account!</h3>
 
     <div class="signup">
-        <button type="submit"> Signup! </button>
+        <button onclick="location.href='/auth/signup'" type="button"> Signup! </button>
+
     </div>
 
 </section>
@@ -55,10 +70,9 @@
 
 <!-- new section -->
 <section class="container" id="topcrypto">
-    <h3> Live top crypto's rate</h3>
+    <h3> Top ranking crypto current rate</h3>
 
-    <div
-        style="height:433px; background-color: #FFFFFF; overflow:hidden; box-sizing: border-box; border: 1px solid #56667F; border-radius: 4px; text-align: right; line-height:14px; font-size: 12px; font-feature-settings: normal; text-size-adjust: 100%; box-shadow: inset 0 -20px 0 0 #56667F; padding: 0px; margin: 0px; width: 100%;">
+    <div>
         <div style="height:413px; padding:0px; margin:0px; width: 100%;"><iframe
                 src="https://widget.coinlib.io/widget?type=full_v2&theme=light&cnt=6&pref_coin_id=1505&graph=yes"
                 width="100%" height="409px" scrolling="auto" marginwidth="0" marginheight="0" frameborder="0" border="0"
@@ -79,16 +93,17 @@
 
 <!-- new section -->
 <section class="container" id="latestnews">
-    <h3> Latest crypto news</h3>
+    <h3> Read the latest crypto news</h3>
     <p><a href="/newsfeed">Check all the lastest news for specific cryptos!</a>
     </p>
-    {{#each allNewsShortened}}
-    <li>{{this.title}}<br>
-        {{this.published_at}}<br>
-        <a href={{this.url}}>Read this news</a>
-    </li>
-    {{/each}}
-
+    <div class="newsmodule">
+        {{#each allNewsShortened}}
+        <li>{{this.title}}<br>
+            {{this.published_at}}<br>
+            <a href={{this.url}}>Read this news</a>
+        </li>
+        {{/each}}
+    </div>
 </section>
 
 <br><br>
@@ -98,23 +113,24 @@
 <!-- new section -->
 <section class="section" id="team">
     <h3> Team </h3>
-    <p class="section-text"> Our founders team is very tech savy has invested and word in the crypto space since 2017.
+    <p class="section-text"> Our founders team is very tech savy has invested and worked in the crypto space since 2017.
+        <br>
+        Our dev tech is at the forefront of the best practices and defensive code so that you can use this app with no
+        doubt and fear not for your security.
     </p>
-    <p>Our dev tech is at the forefront of the best practices and defensive code so that you can use this app with no
-        doubt and fear for your security</p>
     <br>
     <div>
         <article>
             <h4 class="member-name"> Arthur CDG</h4>
-            <img src="" alt="Arthur CDG Image">
+            <img src="https://ca.slack-edge.com/T02NA9U4U5A-U02PJNQKLRE-d5f1d89ccbe8-512" alt="Arthur CDG Image">
         </article>
         <article>
             <h4 class="member-name"> Steven SCM </h4>
-            <img src="" alt="Steven SCM Image">
+            <img src="https://ca.slack-edge.com/T02NA9U4U5A-U02NUMZCD5Y-0dcef4933cd7-512" alt="Steven SCM Image">
         </article>
         <article>
             <h4 class="member-name"> Amine H </h4>
-            <img src="" alt="Amine H Image">
+            <img src="https://ca.slack-edge.com/T02NA9U4U5A-U02PJP1TC4Q-feef74817a49-512" alt="Amine H Image">
         </article>
     </div>
 </section>

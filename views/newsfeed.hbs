@@ -1,5 +1,4 @@
-<h1 class="title">CryptoFolio's newsfeed</h1>
-<h2>Welcome to your customizable crypto newsfeed</h2>
+<h3>Welcome to your customizable crypto newsfeed</h3>
 
 <p>
     Getting informed on your asset is <b>of paramount iportance</b> !<br>
@@ -9,11 +8,12 @@
 
 <hr>
 
-<h2>Select a specific crypto news</h2>
+<h4>Select a specific crypto news</h4>
 
 <label for="cryptochoice">Choose a specific crypto news:</label>
 <input list="cryptochoice-1" id="cryptochoice" name="cryptochoice" />
-<p>Reading {{selectedCrypto.name}}'s news</p>
+
+<h4>Reading Crypto {{selectedCrypto.name}}'s news</h4>
 
 <br>
 
@@ -24,15 +24,16 @@
 </datalist>
 
 
-<h2>All crypto news</h2>
-
-{{#each allNews}}
-<li>{{this.title}}<br>
-    {{this.published_at}}<br>
-    <a href={{this.url}}>Read this news</a>
-</li>
-{{/each}}
-
+<div class=newsmodule>
+    <ul class="newsmodule">
+        {{#each allNews}}
+        <li><span class="title">{{this.title}}</span><br>
+            <span class="date"> {{this.published_at}}</span><br>
+            <a href={{this.url}}>Read this news</a>
+        </li>
+        {{/each}}
+    </ul>
+</div>
 <br><br>
 
 {{!-- <a href="/newsfeed/BTC">BTC LATEST NEWS</a>
