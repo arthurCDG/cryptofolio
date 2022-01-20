@@ -4,8 +4,8 @@ const PortfolioModel = require("../models/Portfolio.model");
 const UserModel = require("../models/User.model");
 
 //Dashboard READ
-router.get("/:userId", function (req, res) {
-    const userId = req.params.userId
+router.get("/", function (req, res) {
+    const userId = req.session.currentUser._id
     // console.log(userId, "USER ID HERE")
     UserModel.findById(userId).populate("portfolios") // PortfolioModel.find({_id: userId})
         .then((user) => {
