@@ -1,10 +1,120 @@
-<h1 class="title">CryptoFolio</h1>
-<h2>Welcome to CrypotoFolio</h2>
+<header class="header">
+    <h1><img src="https://i.ibb.co/q5xXMp4/Capture-d-e-cran-2022-01-20-a-11-04-02.png" alt="CryptoFolio Logo">
+    </h1>
+    <br>
+    <h2>Welcome to CrypotoFolio</h2>
+    <aside class="quote">
+        <i> “The best Crypto Experience of my life” </i>
+        <p> Satoshi Nakamoto & Vitalik Butterin, Crypto Kings </p>
+    </aside>
+</header>
+
+<br><br>
 
 
-<p>
-    Cryptotracking is <b>of paramount iportance</b> !<br>
-    <b>Welcome</b> to CrypotoFolio, a fullstack application powered by expressjs, mongodb and hbs.
-</p>
+<!-- new section -->
+<section class="container" id="why">
+    <article class="container">
+        <h3> Why do you want use CryptoFolio! </h3>
+        <p>
+            Cryptotracking is <b>of paramount iportance</b> !
+            In order to be uptodate with all the cyrpto you have, you should use a quick and handy portfolio tracker !
+            And you know what that is exactly what we offer you here :)
 
-<hr>
+        </p>
+    </article>
+</section>
+
+<br><br>
+
+
+<!-- new section -->
+<section class="container" id="how">
+    <h3> How should you use CryptoFolio </h3>
+    <div>
+        <article class="container">
+            <p></p>
+    </div>
+</section>
+
+<br><br>
+
+
+<!-- new section -->
+<section class="container" id="CTA">
+    <h3> Ready to keep track of your cyrpto investment: singup for a Free Account!</h3>
+
+    <div class="signup">
+        <button type="submit"> Signup! </button>
+    </div>
+
+</section>
+<br><br>
+
+
+
+<!-- new section -->
+<section class="container" id="topcrypto">
+    <h3> Live top crypto's rate</h3>
+
+    <div
+        style="height:433px; background-color: #FFFFFF; overflow:hidden; box-sizing: border-box; border: 1px solid #56667F; border-radius: 4px; text-align: right; line-height:14px; font-size: 12px; font-feature-settings: normal; text-size-adjust: 100%; box-shadow: inset 0 -20px 0 0 #56667F; padding: 0px; margin: 0px; width: 100%;">
+        <div style="height:413px; padding:0px; margin:0px; width: 100%;"><iframe
+                src="https://widget.coinlib.io/widget?type=full_v2&theme=light&cnt=6&pref_coin_id=1505&graph=yes"
+                width="100%" height="409px" scrolling="auto" marginwidth="0" marginheight="0" frameborder="0" border="0"
+                style="border:0;margin:0;padding:0;"></iframe></div>
+        <div
+            style="color: #FFFFFF; line-height: 14px; font-weight: 400; font-size: 11px; box-sizing: border-box; padding: 2px 6px; width: 100%; font-family: Verdana, Tahoma, Arial, sans-serif;">
+            <a href="https://coinlib.io" target="_blank"
+                style="font-weight: 500; color: #FFFFFF; text-decoration:none; font-size:11px">Cryptocurrency
+                Prices</a>&nbsp;by Coinlib
+        </div>
+    </div>
+
+</section>
+
+<br><br>
+
+
+
+<!-- new section -->
+<section class="container" id="latestnews">
+    <h3> Latest crypto news</h3>
+    <p><a href="/newsfeed">Check all the lastest news for specific cryptos!</a>
+    </p>
+    {{#each allNewsShortened}}
+    <li>{{this.title}}<br>
+        {{this.published_at}}<br>
+        <a href={{this.url}}>Read this news</a>
+    </li>
+    {{/each}}
+
+</section>
+
+<br><br>
+
+
+
+<!-- new section -->
+<section class="section" id="team">
+    <h3> Team </h3>
+    <p class="section-text"> Our founders team is very tech savy has invested and word in the crypto space since 2017.
+    </p>
+    <p>Our dev tech is at the forefront of the best practices and defensive code so that you can use this app with no
+        doubt and fear for your security</p>
+    <br>
+    <div>
+        <article>
+            <h4 class="member-name"> Arthur CDG</h4>
+            <img src="" alt="Arthur CDG Image">
+        </article>
+        <article>
+            <h4 class="member-name"> Steven SCM </h4>
+            <img src="" alt="Steven SCM Image">
+        </article>
+        <article>
+            <h4 class="member-name"> Amine H </h4>
+            <img src="" alt="Amine H Image">
+        </article>
+    </div>
+</section>
