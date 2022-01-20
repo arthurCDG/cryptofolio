@@ -47,5 +47,6 @@ span {
 }
 
 a {
-  color: #00b7ff;
+  text-decoration: none;
+  color: #fffdff;
 }

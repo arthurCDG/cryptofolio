@@ -1,3 +1,31 @@
 #value-and-notes-container {
-  background-color: #5e27d2;
+  background-color: #5217ce;
+  border-radius: 10px;
+}
+
+.fa-plus-circle {
+  color: #5217ce;
+}
+
+.fas {
+  transform: scale(2.5, 2.5);
+}
+
+.div-portfolio-details {
+  padding: 15px 0;
+}
+
+#add-a-crypto-div {
+  display: flex;
+  justify-content: right;
+}
+
+#add-a-crypto-div span {
+  padding-right: 40px;
+}
+
+#all-crypto-details {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
