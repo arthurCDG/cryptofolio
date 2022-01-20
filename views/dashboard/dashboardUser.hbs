@@ -4,17 +4,22 @@
   {{#each user.portfolios}}
     <div class="portfolio">
       <a href="/dashboard/portfolio/{{_id}}">
-        <p>{{name}}</p>
-        <p>{{notes}}</p>
+        <p class="name">{{name}}</p>
+        <p class="notes">{{notes}}</p>
       </a>
-      <button class="btn-update">Edit</button>
-      <button class="btn-delete">Delete</button>
+      <button
+        class="btn-update"
+        data-user-id="{{_id}}"
+        data-name="{{name}}"
+        data-notes="{{notes}}"
+      >Edit</button>
+      <button class="btn-delete" data-user-id="{{_id}}">Delete</button>
     </div>
   {{/each}}
 </div>
 
 <div id="create-portfolio">
-  <input type="text" value="name" id="create-name" />
-  <input type="text" value="notes" id="create-notes" />
+  <input type="text" placeholder="Portfolio's name" value="" id="create-name" />
+  <input type="text" placeholder="Portfolio's notes" value="" id="create-notes" />
   <button>Create</button>
 </div>

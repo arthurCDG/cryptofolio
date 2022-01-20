@@ -6,12 +6,9 @@ var express = require("express");
 var path = require("path");
 var cookieParser = require("cookie-parser");
 var logger = require("morgan");
-<<<<<<< HEAD
 var flash = require("connect-flash");
-=======
 var session = require("express-session");
 const MongoStore = require("connect-mongo");
->>>>>>> e06c162581e8f8c244f01b3c6edf361f50ef0a7d
 
 var indexRouter = require("./routes/index.route");
 var authRouter = require("./routes/auth.route");
@@ -30,15 +27,8 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
-//Routes Prefixes
-app.use("/", indexRouter);
-app.use("/auth", authRouter);
-app.use("/dashboard", dashboardRouter);
-app.use("/dashboard/portfolio", portfolioRouter);
-
-<<<<<<< HEAD
 app.use(flash());
-=======
+
 // Session Setup
 app.use(
   session({
@@ -49,7 +39,13 @@ app.use(
     resave: true,
   })
 );
->>>>>>> e06c162581e8f8c244f01b3c6edf361f50ef0a7d
+
+
+//Routes Prefixes
+app.use("/", indexRouter);
+app.use("/auth", authRouter);
+app.use("/dashboard", dashboardRouter);
+app.use("/dashboard/portfolio", portfolioRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

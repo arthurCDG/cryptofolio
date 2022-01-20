@@ -3,38 +3,33 @@ var router = express.Router();
 const PortfolioModel = require("../models/Portfolio.model");
 const UserModel = require("../models/User.model");
 
-//Dashboard READ
-// router.get("/", function (req, res) {
-//     const userId = req.session.currentUser._id
-//     // console.log(userId, "USER ID HERE")
-//     UserModel.findById(userId).populate("portfolios") // PortfolioModel.find({_id: userId})
-//         .then((user) => {
-//             res.render("dashboard/dashboardUser", { user })
-//             // console.log(user, "USER HERE")
-//         })
-//         .catch((err) => console.log(err))
-// });
-
-// A EFFACER  - TEST
-router.get("/:userId", function (req, res) {
-    const userId = req.params.userId
-    // console.log(userId, "USER ID HERE")
-    UserModel.findById(userId).populate("portfolios") // PortfolioModel.find({_id: userId})
-        .then((user) => {
-            res.render("dashboard/dashboardUser", { user })
-            // console.log(user, "USER HERE")
-        })
-        .catch((err) => console.log(err))
+// Dashboard READ
+router.get("/", function (req, res) {
+    const userId = req.session.currentUser?._id
+    if (!userId) {
+        res.redirect("/auth/signin")
+    } else {
+        // console.log(userId, "USER ID HERE")
+        UserModel.findById(userId).populate("portfolios") // PortfolioModel.find({_id: userId})
+            .then((user) => {
+                res.render("dashboard/dashboardUser", { user })
+                // console.log(user, "USER HERE")
+            })
+            .catch((err) => console.log(err))
+    }
 });
 
 //Dashboard CREATE Portfolio
-router.post("/create", function (req, res, next) {
-    PortfolioModel.create(req.body)
-        .then((newPortfolio) => {
-            // console.log(newPortfolio, "NEWPORTFOLIO HERE")
-            res.json(newPortfolio)
+router.post("/create", async function (req, res, next) {
+    try {
+        const newPortfolio = await PortfolioModel.create(req.body);
+        await UserModel.findByIdAndUpdate(req.session.currentUser._id, {
+            $push: { portfolios: newPortfolio._id }
         })
-        .catch((err) => next(err))
+        res.json(newPortfolio);
+    } catch (err) {
+        next(err)
+    }
 });
 
 //Dashboard UPDATE Portfolio
