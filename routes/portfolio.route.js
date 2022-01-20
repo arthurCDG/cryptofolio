@@ -74,6 +74,7 @@ router.get("/:portfolioId/crypto/:cryptoId", async (req, res, next) => {
     }
 
     const crypto = await CryptoModel.findById(cryptoId);
+
     await res.render("portfolio/crypto-details", {
       crypto,
       portfolioId,
@@ -88,9 +89,14 @@ router.get("/:portfolioId/crypto/:cryptoId", async (req, res, next) => {
 router.patch("/:portfolioId/holding/:holdingId/update", (req, res, next) => {
   const { holdingId } = req.params;
   console.log("This is req.body on line 90", req.body);
-  HoldingModel.findByIdAndUpdate(holdingId, {
-    quantity: req.body.quantity,
-  })
+  console.log("Type of req.body.quantity >>>>", typeof req.body.quantity);
+  HoldingModel.findByIdAndUpdate(
+    holdingId,
+    {
+      quantity: req.body.quantity,
+    },
+    { new: true }
+  )
     .then((updatedHolding) => {
       console.log("This is updatedHolding on line 95", updatedHolding);
       res.json(updatedHolding);
