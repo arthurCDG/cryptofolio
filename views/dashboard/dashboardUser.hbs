@@ -1,4 +1,6 @@
-<h1>THIS IS DASHBOARD</h1>
+{{#if title}}
+  <h1>{{title}}</h1>
+{{/if}}
 
 <div id="portfolios-container">
   {{#each user.portfolios}}
@@ -20,6 +22,11 @@
 
 <div id="create-portfolio">
   <input type="text" placeholder="Portfolio's name" value="" id="create-name" />
-  <input type="text" placeholder="Portfolio's notes" value="" id="create-notes" />
+  <input
+    type="text"
+    placeholder="Portfolio's notes"
+    value=""
+    id="create-notes"
+  />
   <button>Create</button>
 </div>
