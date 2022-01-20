@@ -3,20 +3,20 @@
 <div>
     <a href="/dashboard/portfolio/{{portfolioId}}"><i class="fas fa-arrow-left"></i></a>
     <h3>{{crypto.name}}</h3>
+    <h3 id="symbol-of-the-crypto">{{crypto.symbol}}</h3>
     <i class="far fa-heart"></i>
     <i class="fas fa-heart"></i>
 </div>
 
 <div>
     <h2>{{crypto.current_price}}</h2>
-    <input id="quantity-input" type="number" value="0" name="quantity">
+    <h2 id="holding-quantity">{{holding.quantity}}</h2>
 </div>
 
-<canvas width="500"></canvas>
+<canvas id="myChart" width="500"></canvas>
 
 <div>
-    <button data-portfolioId={{portfolioId}} data-holdingId={{holdingId}} id="update-coin-btn">Update quantity</button>
-    <a href="/dashboard/portfolio/{{portfolioId}}/holding/{{holdingId}}/delete" id="remove-coin-a">Remove coin</a>
-    <button id="cancel-update-btn">Cancel</button>
+    <button data-portfolioId={{portfolioId}} data-holdingId={{holding._id}} id="update-coin-btn">Update quantity</button>
+    <a href="/dashboard/portfolio/{{portfolioId}}/holding/{{holding._id}}/delete" id="remove-coin-a">Remove coin</a>
     <button id="confirm-update-btn">Confirm</button>
 </div>

@@ -54,22 +54,22 @@ router.get("/:portfolioId/crypto/:cryptoId", async (req, res, next) => {
   try {
     const cryptoId = req.params.cryptoId;
     const portfolioId = req.params.portfolioId;
-    let holdingId;
+    let holding;
 
     const existingHolding = await HoldingModel.find({ crypto: cryptoId });
 
     if (existingHolding.length > 0) {
-      holdingId = existingHolding[0]._id;
+      holding = existingHolding[0];
     } else {
       const newHolding = await HoldingModel.create({
         quantity: 0,
         crypto: cryptoId,
       });
 
-      holdingId = newHolding._id;
+      holding = newHolding;
 
       await PortfolioModel.findByIdAndUpdate(portfolioId, {
-        $push: { holdings: holdingId },
+        $push: { holdings: holding._id },
       });
     }
 
@@ -78,7 +78,7 @@ router.get("/:portfolioId/crypto/:cryptoId", async (req, res, next) => {
     await res.render("portfolio/crypto-details", {
       crypto,
       portfolioId,
-      holdingId,
+      holding,
     });
   } catch (err) {
     next(err);
@@ -88,8 +88,6 @@ router.get("/:portfolioId/crypto/:cryptoId", async (req, res, next) => {
 // Update crypto holding route
 router.patch("/:portfolioId/holding/:holdingId/update", (req, res, next) => {
   const { holdingId } = req.params;
-  console.log("This is req.body on line 90", req.body);
-  console.log("Type of req.body.quantity >>>>", typeof req.body.quantity);
   HoldingModel.findByIdAndUpdate(
     holdingId,
     {
@@ -98,7 +96,6 @@ router.patch("/:portfolioId/holding/:holdingId/update", (req, res, next) => {
     { new: true }
   )
     .then((updatedHolding) => {
-      console.log("This is updatedHolding on line 95", updatedHolding);
       res.json(updatedHolding);
     })
     .catch((err) => console.error(err));
