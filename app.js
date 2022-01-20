@@ -27,13 +27,8 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
-//Routes Prefixes
-app.use("/", indexRouter);
-app.use("/auth", authRouter);
-app.use("/dashboard", dashboardRouter);
-app.use("/dashboard/portfolio", portfolioRouter);
-
 app.use(flash());
+
 // Session Setup
 app.use(
   session({

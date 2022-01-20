@@ -7,11 +7,11 @@ const protectRoute = require("./../middlewares/protectRoute");
 
 // Here we'll have signin and signup get/post routes
 
-router.get("/signin", protectAuthRoute, (req, res, next) => {
+router.get("/signin", (req, res, next) => {
   res.render("auth/signin.hbs");
 });
 
-router.get("/signup", protectAuthRoute, (req, res, next) => {
+router.get("/signup", (req, res, next) => {
   res.render("auth/signup.hbs");
 });
 

@@ -9,25 +9,25 @@ console.log("test");
 // Here we have home page and news feed
 
 /* GET home page. */
-// router.get("/", function (req, res, next) {
-//   res.render("index");
-// });
-
-router.get("/", async function (req, res, next) {
+router.get("/", function (req, res, next) {
   try {
     const allNews = await axios
       .get(
         "https://cryptopanic.com/api/v1/posts/?auth_token=00b0567da59a656d0a16a62993ee998100f0e430&public=true"
       )
-    const allNewsNew = allNews.data.results;
-    console.log("ALL NEWS NEW ", allNewsNew);
-    const allNewsShortened = allNewsNew.slice(0, 4);
-    res.render("index", { allNewsShortened });
+
+    const crypto = await CryptoModel.find();
+    console.log(crypto);
+
+    res.render("newsfeed", { allNews: allNews.data.results, crypto });
     //process.exit();
   } catch (err) {
     next(err);
   }
 });
+
+});
+
 
 
 
@@ -43,7 +43,7 @@ router.get("/newsfeed/", async function (req, res, next) {
     const crypto = await CryptoModel.find();
     console.log(crypto);
 
-    res.render("newsfeed", { allNews: allNews.data.results, crypto });
+    res.render("index", { allNews: allNews.data.results });
     //process.exit();
   } catch (err) {
     next(err);
@@ -79,6 +79,8 @@ router.get("/newsfeed/", async function (req, res, next) {
 //     })
 //     .catch((err) => console.log(err));
 // });
+
+
 
 
 
