@@ -1,0 +1,111 @@
+h1 {
+  margin-top: 20px;
+  margin-bottom: 40px;
+}
+
+.portfolio {
+  border: thick double #5217ce;
+  margin: 20px 0;
+}
+
+.name,
+.notes {
+  color: #fffdff;
+  overflow-wrap: break-word;
+}
+
+.name {
+  background-color: #5217ce;
+  font-size: 36px;
+  font-weight: bold;
+}
+
+.notes {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.btn-update {
+  padding: 5px 40px;
+  margin: 10px;
+  background-color: #5217ce;
+  color: #fffdff;
+  font-size: 16px;
+  font-weight: bolder;
+}
+
+.btn-delete {
+  padding: 5px 30px;
+  margin: 10px;
+  background-color: #5217ce;
+  color: #fffdff;
+  font-size: 16px;
+  font-weight: bolder;
+}
+
+#create-portfolio {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding-left: 15px;
+  padding-bottom: 100px;
+  padding-top: 40px;
+  margin-top: 50px;
+  border-top: dotted #fffdff;
+}
+
+input,
+#btn-create {
+  margin: 15px 0;
+  background-color: #fffdff;
+  color: #5217ce;
+}
+
+#create-name,
+#create-notes {
+  width: 30%;
+  height: 50px;
+  padding: 0 15px;
+  font-size: 18px;
+  font-weight: bolder;
+}
+
+#btn-create {
+  color: #fffdff;
+  background-color: #5217ce;
+  font-size: 18px;
+  font-weight: bold;
+  padding: 5px 50px;
+}
+
+label {
+  color: #fffdff;
+  font-size: 24px;
+}
+
+.edit-portfolio {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding-left: 10px;
+  padding-bottom: 10px;
+  margin-top: 10px;
+}
+
+.edit-name,
+.edit-notes {
+  width: 30%;
+  height: 50px;
+  padding: 0 15px;
+  font-size: 18px;
+  font-weight: bolder;
+}
+
+.btn-validate {
+  color: #fffdff;
+  background-color: #5217ce;
+  font-size: 16px;
+  font-weight: bolder;
+  padding: 5px 50px;
+  margin-top: 10px;
+}
