@@ -2,8 +2,8 @@ const buttonCreate = document.querySelector("#create-portfolio button");
 const nameCreate = document.querySelector("#create-name");
 const notesCreate = document.querySelector("#create-notes");
 const portfoliosContainer = document.querySelector("#portfolios-container");
-const buttonUpdate = document.getElementsByClassName("btn-update")
-const buttonDelete = document.getElementsByClassName("btn-delete")
+let buttonUpdate = document.getElementsByClassName("btn-update")
+let buttonDelete = document.getElementsByClassName("btn-delete")
 
 console.log(buttonCreate);
 
@@ -17,12 +17,14 @@ function createPortfolioElemt(portfolio) {
     newDiv.appendChild(newLink)
 
     const newName = document.createElement("p")
+    newName.className = "name"
     newName.innerText = portfolio.name
     newLink.appendChild(newName)
 
-    const newNote = document.createElement("p")
-    newNote.innerText = portfolio.notes
-    newLink.appendChild(newNote)
+    const newNotes = document.createElement("p")
+    newNotes.className = "notes"
+    newNotes.innerText = portfolio.notes
+    newLink.appendChild(newNotes)
 
     const btnUpdate = document.createElement("button")
     btnUpdate.dataset.userId = portfolio._id
@@ -52,7 +54,9 @@ buttonCreate.addEventListener("click", () => {
         .catch((err) => console.log(err))
 });
 
+
 const updatePortfolio = () => {
+    buttonUpdate = document.getElementsByClassName("btn-update");
     [...buttonUpdate].forEach((button) => {
         button.addEventListener("click", (evt) => {
 
@@ -61,7 +65,7 @@ const updatePortfolio = () => {
             evt.target.parentElement.appendChild(divEdit)
 
             const nameEdit = document.createElement("input")
-            console.log(evt.target.dataset)
+            console.log(evt.target.dataset, 'LOOK HEEEEERE')
             nameEdit.value = evt.target.dataset.name
             divEdit.appendChild(nameEdit)
 
@@ -77,10 +81,16 @@ const updatePortfolio = () => {
 
             btnValidate.addEventListener('click', () => {
                 axios.patch("/dashboard/update/" + id, { name: nameEdit.value, notes: noteEdit.value })
-                    .then((portfolioEdited) => {
-                        console.log(portfolioEdited, "EDITED PORTFOLIO HERE");
-                        console.log( "IS THIS IT???");
+                    .then(({ data }) => {
+                        console.log(data, "EDITED PORTFOLIO HERE");
+                        const div = btnValidate.closest(".portfolio")
+                        const editedName = div.querySelector(".name")
+                        const editedNotes = div.querySelector(".notes")
+                        editedName.textContent = data.name
+                        editedNotes.textContent = data.notes
                         btnValidate.closest(".edit-portfolio").remove()
+                        nameEdit.value = ""
+                        noteEdit.value = ""
                     })
                     .catch((err) => console.log(err))
             })
@@ -98,6 +108,7 @@ const updatePortfolio = () => {
 // } 
 
 const deletePortfolio = () => {
+    buttonDelete = document.getElementsByClassName("btn-delete");
     [...buttonDelete].forEach((button) => {
         button.addEventListener("click", () => {
             // console.log(button.dataset.userId, "DELETE BTN ID HERE")
@@ -109,3 +120,8 @@ const deletePortfolio = () => {
         })
     })
 }
+
+window.addEventListener('load', () => {
+    updatePortfolio()
+    deletePortfolio()
+});

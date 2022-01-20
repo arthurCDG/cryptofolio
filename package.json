@@ -2,6 +2,9 @@
   "name": "portfolio-crypto",
   "version": "0.0.0",
   "private": true,
+  "engines": {
+    "node": "14.17.0"
+  },
   "scripts": {
     "start": "node ./bin/www",
     "dev": "nodemon ./bin/www -e .js,.hbs"
