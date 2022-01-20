@@ -1,0 +1,43 @@
+
+
+p,
+span {
+  font-size: 16px;
+}
+
+hr{
+    width: 10%;
+    margin: auto;
+    border-style: dotted;
+}
+
+a {
+    text-decoration: none;
+    font-style: oblique;
+}
+
+span.title{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 1.5 em;
+}
+
+span.date{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 1.5 em;
+}
+
+
+
+.newsmodule{
+    background-color: salmon;
+    min-width: 500px;
+    max-width: 800px;
+    padding: 10px;
+}
+
+
+li{
+   
+    list-style-type: none;
+    margin-bottom: 10px;
+}

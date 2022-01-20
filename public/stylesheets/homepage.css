@@ -1,0 +1,107 @@
+p,
+span {
+  font-size: 16px;
+}
+
+a {
+    text-decoration: none;
+    font-style: oblique;
+}
+
+
+.header {
+    background-image: url("https://timelinecovers.pro/facebook-cover/download/blue-bitcoin-facebook-cover.jpg");
+    background-position: 0 0;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 400px;
+    padding-top: 50px;
+    position: relative;
+    text-align: center;
+    font-weight: bolder;
+    animation: animatebackground infinite;
+    animation-duration: 3s;
+
+  }
+
+@keyframes animatebackground{
+    from {opacity: 1;}
+    to {opacity: 0.5;}
+    }
+
+ 
+  
+  .quote {
+    font-size: 2.5em;
+    position: absolute;
+    left: 10%;
+    bottom: 100px;
+  }
+
+
+  #team .member-name {
+    font-size: 1.5em;
+    font-weight: 700;
+  }
+  
+  #team img {
+    width: 250px;
+    height: 180px;
+  }
+
+
+  #team > div {
+    display: flex;
+    justify-content: space-evenly;
+  }
+  
+  #team > div > article {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+  }
+
+
+
+
+section {
+    border-bottom: 1px solid lightgray;
+    padding: 20px;
+}
+section#team{
+    border-bottom:none;
+}
+
+.signup{
+    /* display: flex; */
+    text-align: center;
+}
+
+button{
+    width: 300px;
+    border-radius: 50px;
+    background-color: #5217CE;
+    text-align: center;
+    font-size:xx-large;
+    cursor: pointer;
+}
+
+
+
+.newsmodule{
+    background-color: salmon;
+    min-width: 500px;
+    max-width: 800px;
+    padding: 10px;
+}
+
+
+li{
+   
+    list-style-type: none;
+    margin-bottom: 10px;
+}
+
+
+
