@@ -1,7 +1,8 @@
 <h2>{{portfolio.name}}</h2>
 
-<div>
-    <h3>Total value: <b>${{totalPortfolioValue}}</b></h3>
+<div id="value-and-notes-container">
+    <h5>Total value</h5>
+    <h3><b>${{totalPortfolioValue}}</b></h3>
     <p>{{portfolio.notes}}</p>
 </div>
 
@@ -21,7 +22,8 @@
         </a>
     {{/each}}
     {{else}}
-        <h4>You don't have any crypto in this portfolio. You can add one with the button below.</h4>
+        <p>You don't have any crypto in this portfolio for the moment.</p>
+        <p>You can add one with the button below.</p>
     {{/if}}
 </div>
 

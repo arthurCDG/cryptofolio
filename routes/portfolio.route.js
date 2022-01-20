@@ -32,7 +32,7 @@ router.get("/:id", async (req, res, next) => {
       portfolio,
       totalPortfolioValue,
       title: "Portfolio details",
-      css: "portfolio-details.css",
+      css: ["portfolio-details.css"],
     });
   } catch (err) {
     console.error(err);
@@ -47,7 +47,7 @@ router.get("/:id/all-crypto", (req, res, next) => {
         crypto: allCryptos,
         portfolioId: req.params.id,
         title: "All cryptos",
-        css: "all-cryptos.css",
+        css: ["all-cryptos.css"],
       });
     })
     .catch((err) => console.error(err));
@@ -84,7 +84,7 @@ router.get("/:portfolioId/crypto/:cryptoId", async (req, res, next) => {
       portfolioId,
       holding,
       title: "Crypto details",
-      css: "crypto-details.css",
+      css: ["crypto-details.css"],
     });
   } catch (err) {
     next(err);
