@@ -12,7 +12,7 @@ router.get("/", function (req, res) {
         // console.log(userId, "USER ID HERE")
         UserModel.findById(userId).populate("portfolios") // PortfolioModel.find({_id: userId})
             .then((user) => {
-                res.render("dashboard/dashboardUser", { user, title: "My Portfolios", css: "dashboard-css" })
+                res.render("dashboard/dashboardUser", { user, title: "My Portfolios", css: ["dashboard.css"] })
                 // console.log(user, "USER HERE")
             })
             .catch((err) => console.log(err))

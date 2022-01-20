@@ -1,6 +1,4 @@
-{{#if title}}
-  <h1>{{title}}</h1>
-{{/if}}
+<h1>{{title}}</h1>
 
 <div id="portfolios-container">
   {{#each user.portfolios}}
@@ -21,12 +19,11 @@
 </div>
 
 <div id="create-portfolio">
-  <input type="text" placeholder="Portfolio's name" value="" id="create-name" />
-  <input
-    type="text"
-    placeholder="Portfolio's notes"
-    value=""
-    id="create-notes"
-  />
-  <button>Create</button>
+  <label for="create-name">Name</label>
+  <input type="text" value="" id="create-name"/>
+
+  <label for="create-notes">Notes</label>
+  <input type="text" value="" id="create-notes"/>
+
+  <button id="btn-create">Create</button>
 </div>

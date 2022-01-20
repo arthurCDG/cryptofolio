@@ -47,5 +47,14 @@ span {
 }
 
 a {
-  color: #00b7ff;
+  text-decoration: none;
+  color: #fffdff
+}
+
+hr {
+margin-top: 20px;
+}
+
+#social {
+  margin-left: 20px;
 }

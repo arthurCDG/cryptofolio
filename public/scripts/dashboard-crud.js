@@ -65,15 +65,17 @@ const updatePortfolio = () => {
             evt.target.parentElement.appendChild(divEdit)
 
             const nameEdit = document.createElement("input")
-            console.log(evt.target.dataset, 'LOOK HEEEEERE')
+            nameEdit.className = "edit-name"
             nameEdit.value = evt.target.dataset.name
             divEdit.appendChild(nameEdit)
 
             const noteEdit = document.createElement("input")
+            noteEdit.className = "edit-notes"
             noteEdit.value = evt.target.dataset.notes
             divEdit.appendChild(noteEdit)
 
             const btnValidate = document.createElement("button")
+            btnValidate.className = "btn-validate"
             btnValidate.innerText = "validate"
             divEdit.appendChild(btnValidate)
 
