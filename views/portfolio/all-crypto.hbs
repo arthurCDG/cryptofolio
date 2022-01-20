@@ -1,12 +1,13 @@
-<div>
-    <a href="/dashboard/portfolio/{{portfolioId}}">
-        <i class="fas fa-times"></i>
-    </a>
-</div>
+<a id="cross-button" href="/dashboard/portfolio/{{portfolioId}}">
+    <i class="fas fa-times"></i>
+</a>
 
 <div>
     <h2>Add coin</h2>
-    <input list="crypto-list" type="text" placeholder="Search over 100+ coins" name="coin">
+    <div>
+        <input id="searchbar-cryptos" list="crypto-list" type="text" placeholder="Search over 100+ coins" name="coin">
+        <i class="fas fa-search"></i>
+    </div>
     <datalist id="crypto-list">
         {{#each crypto}}
             <option value={{name}}></option>
@@ -14,12 +15,10 @@
     </datalist>
 </div>
 
-{{#each crypto}}
-
-    <div>
-        <a href="/dashboard/portfolio/{{../portfolioId}}/crypto/{{_id}}">
-            <span><img src={{image}} alt={{name}}></span> <span>{{name}}</span>
+<div id="all-crypto-list">
+    {{#each crypto}}
+        <a class="crypto-link" href="/dashboard/portfolio/{{../portfolioId}}/crypto/{{_id}}">
+            <span><img class="crypto-logo" src={{image}} alt={{name}}></span> <span>{{name}}</span>
         </a>
-    </div>
-
-{{/each}}
+    {{/each}}
+</div>

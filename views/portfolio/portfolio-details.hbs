@@ -1,16 +1,16 @@
 <h2>{{portfolio.name}}</h2>
 
-<div id="value-and-notes-container">
+<div id="value-and-notes-container" class="div-portfolio-details">
     <h5>Total value</h5>
     <h3><b>${{totalPortfolioValue}}</b></h3>
     <p>{{portfolio.notes}}</p>
 </div>
 
-<div>
+<div class="div-portfolio-details">
     {{#if portfolio.holdings}}
     {{#each portfolio.holdings}}
         <a href="/dashboard/portfolio/{{../portfolio._id}}/crypto/{{this.crypto._id}}">
-            <div>
+            <div id="all-crypto-details">
                 <img src={{this.crypto.image}} alt={{this.crypto.name}}>
                 <span>{{this.crypto.name}}</span>
                 <span>${{this.crypto.current_price}}</span>
@@ -27,6 +27,7 @@
     {{/if}}
 </div>
 
-<div>
-    <a href="/dashboard/portfolio/{{portfolio._id}}/all-crypto"><i class="fas fa-plus-circle"></i></a>
+<div id="add-a-crypto-div" class="div-portfolio-details">
+    <span>Add a crypto to my portfolio</span>
+    <a id="add-holding-link" href="/dashboard/portfolio/{{portfolio._id}}/all-crypto"><i class="fas fa-plus-circle"></i></a>
 </div>
