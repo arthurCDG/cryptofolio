@@ -11,6 +11,15 @@ body {
   color: #fffdff;
 }
 
+h1,
+h2,
+h3,
+h4,
+h5,
+p {
+  padding: 20px 10px;
+}
+
 h1 {
   font-size: 4rem;
 }
