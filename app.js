@@ -6,6 +6,8 @@ var express = require("express");
 var path = require("path");
 var cookieParser = require("cookie-parser");
 var logger = require("morgan");
+var session = require("express-session");
+const MongoStore = require("connect-mongo");
 
 var indexRouter = require("./routes/index.route");
 var usersRouter = require("./routes/users.route");
@@ -24,10 +26,22 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
+//Routes Prefixes
 app.use("/", indexRouter);
 app.use("/users", usersRouter);
 app.use("/dashboard", dashboardRouter);
 app.use("/dashboard/portfolio", portfolioRouter);
+
+// Session Setup
+app.use(
+  session({
+    secret: process.env.SESSION_SECRET,
+    cookie: { maxAge: 600000 }, // in millisec
+    store: MongoStore.create({ mongoUrl: process.env.MONGODB_URI }),
+    saveUninitialized: true,
+    resave: true,
+  })
+);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
