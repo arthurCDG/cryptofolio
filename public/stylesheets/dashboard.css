@@ -8,6 +8,11 @@ h1 {
   margin: 20px 0;
 }
 
+.portfolio:hover {
+  background-color: rgb(204, 150, 150);
+  border-radius: 20px;
+}
+
 .name,
 .notes {
   color: #fffdff;

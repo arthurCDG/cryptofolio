@@ -1,10 +1,32 @@
+#portfolio-details-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.fa-times:hover {
+  color: #8c69d6;
+  transform: scale(3.5, 3.5);
+}
+
 #value-and-notes-container {
   background-color: #5217ce;
   border-radius: 10px;
 }
 
+#value-and-notes-container > div {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
 .fa-plus-circle {
   color: #5217ce;
+}
+
+.fa-plus-circle:hover {
+  color: #8c69d6;
+  transform: scale(3.5, 3.5);
 }
 
 .fas {
@@ -16,6 +38,7 @@
 }
 
 #add-a-crypto-div {
+  padding-top: 100px;
   display: flex;
   justify-content: right;
 }
@@ -28,4 +51,37 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+#table-container {
+  display: grid;
+}
+
+.table-row,
+.table-head {
+  /* display: flex;
+  justify-content: space-around; */
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, auto));
+  justify-content: space-around;
+}
+
+.table-row > .td-tag,
+.table-head > .th-tag {
+  width: 20vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.table-row > .td-tag {
+  margin: 30px 0;
+}
+
+.table-row:hover {
+  background-color: #c8b8e95a;
+}
+
+.td-tag > img {
+  width: 50px;
 }

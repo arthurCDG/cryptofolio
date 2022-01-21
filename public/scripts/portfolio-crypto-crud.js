@@ -18,7 +18,9 @@ const setHoldingQuantityH2ElementAsNonEditable = () => {
   confirmUpdateButton.hidden = true;
 };
 
-updateButton.addEventListener("click", setHoldingQuantityH2ElementAsEditable);
+if (updateButton) {
+  updateButton.addEventListener("click", setHoldingQuantityH2ElementAsEditable);
+}
 
 const sendHoldingQuantityH2ElementToBackEnd = () => {
   const portfolioId = updateButton.getAttribute("data-portfolioid");
@@ -35,7 +37,9 @@ const sendHoldingQuantityH2ElementToBackEnd = () => {
     .catch((err) => console.error(err));
 };
 
-confirmUpdateButton.addEventListener(
-  "click",
-  sendHoldingQuantityH2ElementToBackEnd
-);
+if (confirmUpdateButton) {
+  confirmUpdateButton.addEventListener(
+    "click",
+    sendHoldingQuantityH2ElementToBackEnd
+  );
+}

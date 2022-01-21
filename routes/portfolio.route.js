@@ -22,11 +22,16 @@ router.get("/:id", async (req, res, next) => {
 
     for (let i = 0; i < portfolio.holdings.length; i++) {
       const holdingValue =
-        portfolio.holdings[i].quantity *
-        portfolio.holdings[i].crypto.current_price;
+        Math.round(
+          portfolio.holdings[i].quantity *
+            portfolio.holdings[i].crypto.current_price *
+            100
+        ) / 100;
       totalPortfolioValue += holdingValue;
       portfolio.holdings[i].value = holdingValue;
     }
+
+    totalPortfolioValue = Math.round(totalPortfolioValue * 100) / 100;
 
     res.render("portfolio/portfolio-details", {
       portfolio,
@@ -60,10 +65,41 @@ router.get("/:portfolioId/crypto/:cryptoId", async (req, res, next) => {
     const portfolioId = req.params.portfolioId;
     let holding;
 
-    const existingHolding = await HoldingModel.find({ crypto: cryptoId });
+    const existingHoldingInThisPortfolio = await HoldingModel.find({
+      crypto: cryptoId,
+    });
 
-    if (existingHolding.length > 0) {
-      holding = existingHolding[0];
+    const crypto = await CryptoModel.findById(cryptoId);
+
+    // const currentPortfolio = await PortfolioModel.findById(
+    //   portfolioId
+    // ).populate("cryptoInPortfolio");
+
+    // for (let i = 0; i < currentPortfolio.cryptoInPortfolio.length; i++) {
+    //   if (currentPortfolio.cryptoInPortfolio[i] === targetCrypto) {
+    //     holding = currentPortfolio.holdings[i];
+    //     break;
+    //   } else {
+    //     const newHolding = await HoldingModel.create({
+    //       quantity: 0,
+    //       crypto: cryptoId,
+    //     });
+
+    //     holding = newHolding;
+
+    //     await PortfolioModel.findByIdAndUpdate(portfolioId, {
+    //       $push: { holdings: holding._id },
+    //     });
+
+    //     await PortfolioModel.findByIdAndUpdate(portfolioId, {
+    //       $push: { cryptoInPortfolio: crypto._id },
+    //     });
+    //     break;
+    //   }
+    // }
+
+    if (existingHoldingInThisPortfolio.length > 0) {
+      holding = existingHoldingInThisPortfolio[0];
     } else {
       const newHolding = await HoldingModel.create({
         quantity: 0,
@@ -77,9 +113,7 @@ router.get("/:portfolioId/crypto/:cryptoId", async (req, res, next) => {
       });
     }
 
-    const crypto = await CryptoModel.findById(cryptoId);
-
-    await res.render("portfolio/crypto-details", {
+    res.render("portfolio/crypto-details", {
       crypto,
       portfolioId,
       holding,

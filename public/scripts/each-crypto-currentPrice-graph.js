@@ -1,16 +1,9 @@
-//Get the fromDate, the toDate and currency details --- Il faudrait que je dise que toDate soit aujourd'hui et fromDate (10 jours avant ?)
-const currentDate = Date.now();
-// const fromDate = currentDate.getFullYear();
-
 // Currency sera la valeur dynamique obtenue sur la page
-const symbolOfTheCrypto = document.querySelector(
-  "#symbol-of-the-crypto"
-).innerText;
-console.log("symbolOfTheCrypto >>>>>>>>>>>", symbolOfTheCrypto);
+let symbolOfTheCrypto = "BTC";
 
-axios.get("/");
-
-let labelData, figuresData;
+if (document.querySelector("#symbol-of-the-crypto")) {
+  symbolOfTheCrypto = document.querySelector("#symbol-of-the-crypto").innerText;
+}
 
 // Create a function to call the axios and then store the data in labelData and figuresData
 const showGraph = () => {
@@ -19,25 +12,29 @@ const showGraph = () => {
       `https://www.alphavantage.co/query?function=DIGITAL_CURRENCY_DAILY&symbol=${symbolOfTheCrypto}&market=USD&apikey=YE17KHZEV0XAPJN8`
     )
     .then((response) => {
-      labelData = Object.keys(
+      const labelData = Object.keys(
         response.data["Time Series (Digital Currency Daily)"]
       ).splice(0, 20);
-      console.log(labelData);
-      let x = Object.values(
+
+      const x = Object.values(
         response.data["Time Series (Digital Currency Daily)"]
       ).splice(0, 20);
-      let figuresData = [];
+
+      const figuresData = [];
+
       for (let i = 0; i < x.length; i++) {
         figuresData.push(Number(x[i]["1a. open (USD)"]));
       }
-      console.log(x);
+
+      console.log(labelData);
       console.log(figuresData);
+      renderChart(labelData, figuresData);
     })
     .catch((err) => console.error(err));
 };
 
 //Show the data in the canvas
-setTimeout(() => {
+function renderChart(labelData, figuresData) {
   const ctx = document.getElementById("myChart").getContext("2d");
 
   const myChart = new Chart(ctx, {
@@ -69,6 +66,6 @@ setTimeout(() => {
       ],
     },
   });
-}, 3000);
+}
 
 showGraph();
