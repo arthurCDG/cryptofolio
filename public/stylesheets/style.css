@@ -59,46 +59,24 @@ hr {
   margin-left: 5px;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 /* Steven's part has to be on the main style css deal with the layout.hbs */
-header  {
+header {
   padding: 0 25px;
   padding-bottom: 20px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   border-bottom: 1px dotted lightgray;
-
+  position: sticky;
+  top: 0;
+  background-color: #161222;
 }
 
-.logo{
-    width: 100px;
+.logo {
+  width: 100px;
 }
 
-.nav{
+.nav {
   background-color: rgb(25, 33, 41);
   padding: 14px 0;
   /* display: inline-block; */
@@ -108,8 +86,6 @@ nav a {
   text-decoration: none;
   color: white;
 }
-
-
 
 .footer {
   /* font-size: 1em; */

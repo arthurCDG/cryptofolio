@@ -1,13 +1,42 @@
-<form method="POST" action="/auth/signup">
-    <input type='text' placeholder="first name" name="firstName">
-    <input type='text' placeholder="last name" name="lastName">
-    <input type='email' placeholder="email" name="email">
-    <input type='password' placeholder="password" name="password">
-    <input type="file" name="image">
+{{!-- <form method="POST" action="/auth/signup">
+  <input type='text' placeholder="first name" name="firstName">
+  <input type='text' placeholder="last name" name="lastName">
+  <input type='email' placeholder="email" name="email">
+  <input type='password' placeholder="password" name="password">
+  <input type="file" name="image">
 
   <button>SIGN UP</button>
 </form>
 
 <p>
-    Already have an account ? <a href="/auth/signin">signin</a>
-</p>
+  Already have an account ? <a href="/auth/signin">signin</a>
+</p> --}}
+
+
+{{!-- {{#if msg}}
+<p class="message {{msg.status}}">{{msg.text}}</p>
+{{/if}} --}}
+
+
+<section class="sign form-container">
+  <form method="post" action="/auth/signup" id="form_user">
+    <div class="form-item-wrapper flexed-item">
+      <label for="firstname" class="label-ref label">Firstname</label>
+      <input id="firstname" name="firstName" type="text" class="input-text input" placeholder="Satoshi">
+    </div>
+    <div class="form-item-wrapper flexed-item">
+      <label for="lastname" class="label-ref label">Last Name</label>
+      <input id="lastname" name="lastName" type="text" class="input-text input" placeholder="Nakamoto">
+    </div>
+    <div class="form-item-wrapper flexed-item">
+      <label for="email" class="label-ref label">Email &nbsp; &nbsp; </label>
+      <input id="email" name="email" type="email" class="input-text input" placeholder="satoshinakamoto@bitcoin.com">
+    </div>
+    <div class="form-item-wrapper flexed-item">
+      <label for="password" class="label-ref label">Password </label>
+      <input id="password" name="password" type="password" class="input-text input" placeholder="••••••">
+    </div>
+    <button class="button-primary white">Create Account</button>
+  </form>
+  <p class="form-sub-infos">Already have an account? <a href="/auth/signin" class="button-link-form">Sign In</a></p>
+</section>
