@@ -1,22 +1,30 @@
-<h1>This is the crypto details page</h1>
+<h1>{{crypto.name}}</h1>
 
-<div>
+
+<div id="crypto-details-header">
     <a href="/dashboard/portfolio/{{portfolioId}}"><i class="fas fa-arrow-left"></i></a>
-    <h3>{{crypto.name}}</h3>
+    <div>
+        <img id="crypto-image" src={{crypto.image}} alt={{crypto.name}}>
+        <h3>{{crypto.name}}</h3>
+    </div>
     <h3 id="symbol-of-the-crypto">{{crypto.symbol}}</h3>
-    <i class="far fa-heart"></i>
-    <i class="fas fa-heart"></i>
 </div>
 
-<div>
-    <h2>{{crypto.current_price}}</h2>
-    <h2 id="holding-quantity">{{holding.quantity}}</h2>
+<div id="current-price-and-quantity">
+    <div>
+        <h5>Current price:</h5>
+        <h2>${{crypto.current_price}}</h2>
+    </div>
+    <div>
+        <h5>Quantity you own:</h5>
+        <h2 id="holding-quantity">{{holding.quantity}}</h2>
+    </div>
 </div>
 
-<canvas id="myChart" width="500"></canvas>
-
-<div>
-    <button data-portfolioId={{portfolioId}} data-holdingId={{holding._id}} id="update-coin-btn">Update quantity</button>
+<div id="crypto-details-buttons">
+    <button class="button-crypto-details" data-portfolioId={{portfolioId}} data-holdingId={{holding._id}} id="update-coin-btn">Update quantity</button>
     <a href="/dashboard/portfolio/{{portfolioId}}/holding/{{holding._id}}/delete" id="remove-coin-a">Remove coin</a>
-    <button id="confirm-update-btn">Confirm</button>
+    <button class="button-crypto-details" id="confirm-update-btn" hidden="true">Confirm</button>
 </div>
+
+<canvas id="myChart"></canvas>

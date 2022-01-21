@@ -33,7 +33,7 @@ app.use(flash());
 app.use(
   session({
     secret: process.env.SESSION_SECRET,
-    cookie: { maxAge: 600000 }, // in millisec
+    cookie: { maxAge: 3000000 }, // in millisec
     store: MongoStore.create({ mongoUrl: process.env.MONGODB_URI }),
     saveUninitialized: true,
     resave: true,

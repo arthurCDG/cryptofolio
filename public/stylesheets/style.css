@@ -47,7 +47,16 @@ span {
 }
 
 a {
-  color: #00b7ff;
+  text-decoration: none;
+  color: #fffdff;
+}
+
+hr {
+  margin-top: 20px;
+}
+
+#social {
+  margin-left: 20px;
 }
 
 
@@ -107,7 +116,7 @@ nav a {
   text-align: center;
   /* padding: 40px 100px; */
   margin-bottom: 25px;
-  margin-top: 25px;
+  margin-top: 35px;
   display: flex;
   justify-content: center;
   align-items: center;
