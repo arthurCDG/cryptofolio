@@ -8,13 +8,12 @@
     Don't have an account yet ? <a href="/auth/signup">signup</a>
 </p> --}}
 
-{{!-- {{#if msg}}
+{{!-- {#if msg}}
 <p class="message {{msg.status}}">{{msg.text}}</p>
 {{/if}} --}}
 
 <section class="sign form-container">
     <form method="post" action="/auth/signin" id="form_user">
-        {{!-- {{> flash_message}} --}}
         <div class="form-item-wrapper flexed-item">
             <label for="email" class="label-ref label">Email&nbsp;&nbsp;&nbsp;</label>
             <input id="email" type="email" class="input-text input" placeholder="satoshi.nakamoto@bitcoin.com" required
