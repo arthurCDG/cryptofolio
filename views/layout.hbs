@@ -1,75 +1,80 @@
-<!DOCTYPE html>
 <html>
 
-<head>
+  <head>
+    <title>{{title}}</title>
 
-  <title>{{title}}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+    />
+    {{#each css}}
+      <link rel="stylesheet" href="/stylesheets/{{this}}" />
+    {{/each}}
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="/scripts/dashboard-crud.js" type="module"></script>
+    <script src="/scripts/portfolio-crypto-crud.js" type="module"></script>
+    <script
+      src="/scripts/each-crypto-currentPrice-graph.js"
+      type="module"
+    ></script>
+  </head>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap"
-    rel="stylesheet">
-  <link rel='stylesheet' href='/stylesheets/style.css' />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
-  {{#each css}}
-  <link rel="stylesheet" href="/stylesheets/{{this}}">
-  {{/each}}
-  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <script src="/scripts/dashboard-crud.js" type="module"></script>
-  <script src="/scripts/portfolio-crypto-crud.js" type="module"></script>
-  <script src="/scripts/each-crypto-currentPrice-graph.js" type="module"></script>
-</head>
-
-
-
-
-<body>
-  <header id="header-main">
-
-    <div>
-      <a href="/"><img class="logo" src="https://i.ibb.co/q5xXMp4/Capture-d-e-cran-2022-01-20-a-11-04-02.png"
-          alt="CrypotoFolio's logo " /></a>
-    </div>
-
-    <nav>
-      <a href="/" class="link">Home</a> |
-      <a href="/newsfeed" class="link">Newsfeed</a> |
-      <a href="/dashboard" class="link">Dashboard</a> |
-      <a href="/auth/signup" class="link">Signup</a>
-
-    </nav>
-
-  </header>
-
-  {{{body}}}
-
-  <footer class="dark-background footer">
-
-    <div class="contactinfo">
-      {{!--
-      <hr> --}}
-      <h5> Contact Information </h5>
-      <address class="address">CryptoFolio <br /> 226 Boulevard Voltaire, <br /> 75011 Paris, <br /> France <br /> +33
-        1 79 75 40 00</address>
-    </div>
-    <div>
-      <div class="follow">
+  <body>
+    <header id="header-main">
+      <div>
+        <a href="/"><img
+            class="logo"
+            src="https://i.ibb.co/q5xXMp4/Capture-d-e-cran-2022-01-20-a-11-04-02.png"
+            alt="CrypotoFolio's logo "
+          /></a>
       </div>
-      <h5> Follow Us </h5>
-      <ul id="social">
-        <li> <a href="#"> Twitter </a> </li>
-        <li> <a href="#"> Facebook </a> </li>
-        <li> <a href="#"> Instagram </a> </li>
-      </ul>
-    </div>
 
+      <nav>
+        <a href="/" class="link">Home</a>
+        |
+        <a href="/newsfeed" class="link">Newsfeed</a>
+        |
+        <a href="/dashboard" class="link">Dashboard</a>
+        |
+        <a href="/auth/signup" class="link">Signup</a>
+      </nav>
+    </header>
 
-  </footer>
+    {{{body}}}
 
-</body>
+    <footer class="dark-background footer">
+      <div class="contactinfo">
+        <h5> Contact Information </h5>
+        <address class="address">CryptoFolio
+          <br />
+          226 Boulevard Voltaire,
+          <br />
+          75011 Paris,
+          <br />
+          France
+          <br />
+          +33 1 79 75 40 00</address>
+      </div>
 
-
+      <div>
+        <div class="follow">
+        </div>
+        <h5> Follow Us </h5>
+        <ul id="social">
+          <li> <a href="#"> Twitter </a> </li>
+          <li> <a href="#"> Facebook </a> </li>
+          <li> <a href="#"> Instagram </a> </li>
+        </ul>
+      </div>
+    </footer>
+  </body>
 
 </html>

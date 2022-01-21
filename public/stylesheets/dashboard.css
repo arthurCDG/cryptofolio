@@ -3,44 +3,54 @@ h1 {
   margin-bottom: 40px;
 }
 
-.portfolio {
-  border: thick double #5217ce;
-  margin: 20px 0;
+.portfolio:hover {
+  border: thick double #fffdff;
+  padding: 0 5px;
+  border-radius: 5px;
 }
 
 .name,
 .notes {
   color: #fffdff;
   overflow-wrap: break-word;
+  border-radius: 5px;
+  border: solid #5217ce;
 }
 
 .name {
   background-color: #5217ce;
   font-size: 36px;
   font-weight: bold;
+  margin-top: 5px;
 }
 
 .notes {
   font-size: 24px;
   font-weight: bold;
+  margin-top: 15px;
+  margin-bottom: 10px;
 }
 
 .btn-update {
   padding: 5px 40px;
   margin: 10px;
-  background-color: #5217ce;
+  background-color: #00d683;
   color: #fffdff;
   font-size: 16px;
   font-weight: bolder;
+  border-radius: 5px;
+  margin-bottom: 15px;
 }
 
 .btn-delete {
   padding: 5px 30px;
   margin: 10px;
-  background-color: #5217ce;
+  background-color: #e32152;
   color: #fffdff;
   font-size: 16px;
   font-weight: bolder;
+  border-radius: 5px;
+  margin-bottom: 15px;
 }
 
 #create-portfolio {
@@ -57,17 +67,20 @@ h1 {
 input,
 #btn-create {
   margin: 15px 0;
-  background-color: #fffdff;
-  color: #5217ce;
+  border-radius: 5px;
 }
 
 #create-name,
 #create-notes {
+  background-color: #fffdff;
+  color: #5217ce;
   width: 30%;
+  min-width: 400px;
   height: 50px;
   padding: 0 15px;
   font-size: 18px;
   font-weight: bolder;
+  border-radius: 5px;
 }
 
 #btn-create {
@@ -76,6 +89,7 @@ input,
   font-size: 18px;
   font-weight: bold;
   padding: 5px 50px;
+  border-radius: 5px;
 }
 
 label {
@@ -94,7 +108,10 @@ label {
 
 .edit-name,
 .edit-notes {
+  background-color: #fffdff;
+  color: #5217ce;
   width: 30%;
+  min-width: 300px;
   height: 50px;
   padding: 0 15px;
   font-size: 18px;
@@ -108,4 +125,5 @@ label {
   font-weight: bolder;
   padding: 5px 50px;
   margin-top: 10px;
+  border-radius: 5px;
 }

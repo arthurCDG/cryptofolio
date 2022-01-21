@@ -1,29 +1,33 @@
 <h1>{{title}}</h1>
 
 <div id="portfolios-container">
-  {{#each user.portfolios}}
-    <div class="portfolio">
-      <a href="/dashboard/portfolio/{{_id}}">
-        <p class="name">{{name}}</p>
-        <p class="notes">{{notes}}</p>
-      </a>
-      <button
-        class="btn-update"
-        data-user-id="{{_id}}"
-        data-name="{{name}}"
-        data-notes="{{notes}}"
-      >Edit</button>
-      <button class="btn-delete" data-user-id="{{_id}}">Delete</button>
-    </div>
-  {{/each}}
+  {{!-- {{#if user.porfolios}} --}}
+    {{#each user.portfolios}}
+      <div class="portfolio">
+        <a href="/dashboard/portfolio/{{_id}}">
+          <p class="name">{{name}}</p>
+          <p class="notes">{{notes}}</p>
+        </a>
+        <button
+          class="btn-update"
+          data-user-id="{{_id}}"
+          data-name="{{name}}"
+          data-notes="{{notes}}"
+        >Edit</button>
+        <button class="btn-delete" data-user-id="{{_id}}">Delete</button>
+      </div>
+    {{/each}}
+  {{!-- {{else}}
+    <p>You don't have any portfolio for the moment.</p>
+  {{/if}} --}}
 </div>
 
 <div id="create-portfolio">
   <label for="create-name">Name</label>
-  <input type="text" value="" id="create-name"/>
+  <input type="text" value="" id="create-name" />
 
   <label for="create-notes">Notes</label>
-  <input type="text" value="" id="create-notes"/>
+  <input type="text" value="" id="create-notes" />
 
   <button id="btn-create">Create</button>
 </div>
