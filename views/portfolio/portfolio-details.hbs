@@ -1,26 +1,54 @@
-<h2>{{portfolio.name}}</h2>
+<div id="portfolio-details-header">
+    <h2>{{portfolio.name}}</h2>
+    <a id="cross-button" href="/dashboard/">
+    <i class="fas fa-times"></i>
+</a>
+</div>    
 
 <div id="value-and-notes-container" class="div-portfolio-details">
-    <h5>Total value</h5>
-    <h3><b>${{totalPortfolioValue}}</b></h3>
+    <div>
+        <h5>Total value:</h5>
+        <h3><b>${{totalPortfolioValue}}</b></h3>
+    </div>
     <p>{{portfolio.notes}}</p>
 </div>
 
 <div class="div-portfolio-details">
     {{#if portfolio.holdings}}
-    {{#each portfolio.holdings}}
-        <a href="/dashboard/portfolio/{{../portfolio._id}}/crypto/{{this.crypto._id}}">
-            <div id="all-crypto-details">
-                <img src={{this.crypto.image}} alt={{this.crypto.name}}>
-                <span>{{this.crypto.name}}</span>
-                <span>${{this.crypto.current_price}}</span>
-                <div>
-                    <span>{{this.quantity}}</span>
-                    <span>${{this.value}}</span>
-                </div>
-            </div>
-        </a>
-    {{/each}}
+    <div id="table-container">
+        <div id="table-head">
+            <div class="table-head">
+                <div class="th-tag"><h5>Crypto logo</h5></div>
+                <div class="th-tag"><h5>Crypto name</h5></div>
+                <div class="th-tag"><h5>Current price</h5></div>
+                <div class="th-tag"><h5>Quantity owned</h5></div>
+            </div class="table-row">
+        </div>
+        <hr>
+        <div id="table-body">        
+        {{#each portfolio.holdings}}
+            <a href="/dashboard/portfolio/{{../portfolio._id}}/crypto/{{this.crypto._id}}">
+                <div class="table-row" id="all-crypto-details">
+                    <div class="td-tag">
+                        <img src={{this.crypto.image}} alt={{this.crypto.name}}>
+                    </div>
+                    <div class="td-tag">
+                        <span>{{this.crypto.name}}</span>
+                    </div>
+                    <div class="td-tag">
+                        <span>${{this.crypto.current_price}}</span>
+                    </div>
+                    <div class="td-tag">
+                        <div>
+                            <span>{{this.quantity}}</span>
+                            <span>(${{this.value}})</span>
+                        </div>
+                    </div>
+                </div class="table-row">
+            </a>
+        {{/each}}
+        </div>
+    </div>
     {{else}}
         <p>You don't have any crypto in this portfolio for the moment.</p>
         <p>You can add one with the button below.</p>
