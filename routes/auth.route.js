@@ -8,11 +8,15 @@ const protectRoute = require("./../middlewares/protectRoute");
 // Here we'll have signin and signup get/post routes
 
 router.get("/signin", (req, res, next) => {
-  res.render("auth/signin.hbs");
+  res.render("auth/signin.hbs",
+    { title: "Signin", css: ["login-signup.css"] }
+  )
 });
 
 router.get("/signup", (req, res, next) => {
-  res.render("auth/signup.hbs");
+  res.render("auth/signup.hbs",
+    { title: "Signup", css: ["login-signup.css"] }
+  )
 });
 
 router.get("/signout", protectRoute, (req, res, next) => {
@@ -26,18 +30,18 @@ router.post("/signin", async (req, res, next) => {
     const foundUser = await UserModel.findOne({ email: email });
 
     if (!foundUser) {
-      req.flash("error", "Invalid credentials");
+      // req.flash("error", "Invalid credentials");
       res.redirect("/auth/signin");
     } else {
       const isSamePassword = bcrypt.compareSync(password, foundUser.password);
       if (!isSamePassword) {
-        req.flash("error", "Invalid credentials");
+        // req.flash("error", "Invalid credentials");
         res.redirect("/auth/signin");
       } else {
         const userObject = foundUser.toObject();
         delete userObject.password;
         req.session.currentUser = userObject;
-        req.flash("success", "Successfully logged in...");
+        // req.flash("success", "Successfully logged in...");
         res.redirect("/dashboard");
       }
     }
@@ -49,22 +53,23 @@ router.post("/signin", async (req, res, next) => {
 router.post("/signup", async (req, res, next) => {
   try {
     const newUser = { ...req.body };
+    console.log(newUser);
 
     const foundUser = await UserModel.findOne({ email: newUser.email });
 
     if (foundUser) {
-      req.flash("warning", "Email already registered");
+      // req.flash("warning", "Email already registered");
       res.redirect("/auth/signup");
     } else {
       const hashedPassword = bcrypt.hashSync(newUser.password, 10);
       newUser.password = hashedPassword;
       await UserModel.create(newUser);
-      req.flash("success", "Congrats ! You are now registered !");
+      // req.flash("success", "Congrats ! You are now registered !");
       res.redirect("/auth/signin");
     }
   } catch (err) {
     console.log(err);
-    req.flash("error", errorMessage);
+    // req.flash("error", errorMessage);
     res.redirect("/auth/signup");
   }
 });

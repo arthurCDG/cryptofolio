@@ -1,5 +1,4 @@
-
-<form method="POST" action="/auth/signin">
+{{!-- <form method="POST" action="/auth/signin">
     <input type='email' placeholder="email" name="email">
     <input type='password' placeholder="password" name="password">
     <button>SIGN IN</button>
@@ -7,4 +6,25 @@
 
 <p>
     Don't have an account yet ? <a href="/auth/signup">signup</a>
-</p>
+</p> --}}
+
+{{!-- {{#if msg}}
+<p class="message {{msg.status}}">{{msg.text}}</p>
+{{/if}} --}}
+
+<section class="sign form-container">
+    <form method="post" action="/auth/signin" id="form_user">
+        {{!-- {{> flash_message}} --}}
+        <div class="form-item-wrapper flexed-item">
+            <label for="email" class="label-ref label">Email&nbsp;&nbsp;&nbsp;</label>
+            <input id="email" type="email" class="input-text input" placeholder="satoshi.nakamoto@bitcoin.com" required
+                name="email">
+        </div>
+        <div class="form-item-wrapper flexed-item">
+            <label for="password" class="label-ref label">Password</label>
+            <input id="password" type="password" class="input-text input" placeholder="••••••" required name="password">
+        </div>
+        <button class="button-primary white">Log in!</button>
+    </form>
+    <p class="form-sub-infos">Don't have an account yet? <a href="/auth/signup" class="button-link-form">Sign Up</a></p>
+</section>

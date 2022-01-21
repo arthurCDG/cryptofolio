@@ -20,7 +20,7 @@ router.get("/", async function (req, res, next) {
         "https://cryptopanic.com/api/v1/posts/?auth_token=00b0567da59a656d0a16a62993ee998100f0e430&public=true"
       )
     const allNewsNew = allNews.data.results;
-    console.log("ALL NEWS NEW ", allNewsNew);
+    // console.log("ALL NEWS NEW ", allNewsNew);
     const allNewsShortened = allNewsNew.slice(0, 4);
     res.render("index", {
       allNewsShortened, title: "CryptoFolio!",

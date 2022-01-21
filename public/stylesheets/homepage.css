@@ -47,7 +47,8 @@ a {
   
   #team img {
     width: 250px;
-    height: 180px;
+    height: 250px;
+    border-radius: 200px
   }
 
 
@@ -81,11 +82,13 @@ section#team{
 
 button{
     width: 300px;
-    border-radius: 50px;
+    border-radius: 5px;
     background-color: #5217CE;
     text-align: center;
     font-size:xx-large;
     cursor: pointer;
+    color: white;
+    font-weight: bolder;
 }
 
 
