@@ -100,6 +100,8 @@ router.get("/newsfeed/:symbol", async function (req, res, next) {
       allNews: allNews.data.results,
       crypto,
       selectedCrypto: selectedCrypto[0],
+      title: "CryptoFolio Newsfeed",
+      css: ["newsfeed.css"]
     });
     //process.exit();
   } catch (err) {
